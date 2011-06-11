@@ -16,7 +16,7 @@ LICENSE=""
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-util/mercurial"
+DEPEND="dev-vcs/mercurial"
 RDEPEND=${DEPEND}
 
 S="${WORKDIR}/${PN}"
