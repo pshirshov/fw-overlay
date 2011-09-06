@@ -2,7 +2,8 @@ inherit linux-mod
 
 DESCRIPTION="Realtek RTL8111B/RTL8168B NIC drivers"
 HOMEPAGE="http://www.realtek.com.tw/downloads/downloadsView.aspx?Langid=1&PNid=13&PFid=5&Level=5&Conn=4&DownTypeID=3&GetDown=false#2"
-SRC_URI="file://${PORTDIR}/${CATEGORY}/${PN}/${P}.tar.bz2"
+#DISTDIR_OVERLAY=
+SRC_URI="file://${PORTDIR}/${CATEGORY}/${PN}/files/${P}.tar.bz2"
 #RESTRICT="fetch"
 #SRC_URI="file://r8168-8.025.00.tar.bz2"
 LICENSE="GPL2"
