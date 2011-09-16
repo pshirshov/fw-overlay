@@ -4,11 +4,11 @@
 
 inherit eutils
 
-MY_PN="pycharm"
+MY_PN="PyCharm"
 
 DESCRIPTION="Powerfull Python and Django IDE similar to IntelliJ IDEA"
 HOMEPAGE="http://jetbrains.com/pycharm/"
-SRC_URI="http://download.jetbrains.com/python/${MY_PN}-${PV}.tar.gz"
+SRC_URI="http://download.jetbrains.com/python/${PN}-${PV}.tar.gz"
 
 LICENSE="|| ( PyCharm-commercial
 			  PyCharm-academic
