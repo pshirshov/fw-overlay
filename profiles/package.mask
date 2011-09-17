@@ -1,2 +1,5 @@
 # masked till official plugin in jet brains repository is up-to-date
 =dev-util/idea-plugins-ivy-9999
+
+# missed metastore package (not really needed?)
+=app-admin/etckeeper-9999
