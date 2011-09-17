@@ -50,16 +50,13 @@ src_install() {
 	mkdir -p "${D}/etc/portage/"
 	cp "${FILESDIR}/autocommit" "${D}/etc/portage/etckeeper" || die "Could not copy autocommit script"
 	chmod 755 "${D}/etc/portage/etckeeper"
-
-	if use auto-commit; then
-		if [ -d ${ROOT}/etc/portage ] ; then
-			echo "source ${ROOT}etc/portage/etckeeper" >> ${ROOT}/etc/portage/bashrc
-		fi
-	fi
 }
 
 pkg_postinst() {
 	if use auto-commit; then
+		if [ -d ${ROOT}/etc/portage ] ; then
+			echo "source ${ROOT}etc/portage/etckeeper" >> ${ROOT}/etc/portage/bashrc
+		fi
 		elog "Autocommiting enabeled"
 		elog "If you wnat to disable this behaviour then remove this package"
 		elog "emerge -C app-admin/etckeeper"
