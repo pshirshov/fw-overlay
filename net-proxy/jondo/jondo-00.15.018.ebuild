@@ -23,11 +23,9 @@ pkg_postinst() {
     local dir="/opt/${PN}"
     local wrapper="${dir}/${PN}.sh"
     touch ${wrapper}
-    echo "#!/bin/sh\n\njava -jar JAP.jar" > ${wrapper}
+    echo "#!/bin/sh" > ${wrapper}         
+    echo "java -jar JAP.jar" >> ${wrapper}
     fperms 755 ${wrapper}
-
-    make_wrapper "${PN}" "${dir}/${PN}.sh"
-    make_desktop_entry "${PN}" "JAP/JonDo" "${PN}" "Network;Proxy"
 }
 
 src_install() {
@@ -36,5 +34,7 @@ src_install() {
     doins -r *
     
     newicon "jondo_linux/icons/${PN}-32.png" "${PN}.png"
+    make_wrapper "${PN}" "${dir}/${PN}.sh"
+    make_desktop_entry "${PN}" "JAP/JonDo" "${PN}" "Network;Proxy"
 }
 
