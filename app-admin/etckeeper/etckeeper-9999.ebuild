@@ -69,7 +69,6 @@ pkg_postinst() {
 pkg_postrm() {
 	if use auto-commit; then
 		if [ -e ${ROOT}/etc/portage/etckeeper ] ; then
-			rm -rf ${ROOT}/etc/portage/etckeeper
 			sed  -i '/etckeeper/d' ${ROOT}/etc/portage/bashrc
 		fi
 	fi
