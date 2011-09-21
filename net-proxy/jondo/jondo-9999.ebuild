@@ -7,10 +7,7 @@ inherit eutils versionator
 SLOT="$(get_major_version)"
 RDEPEND=">=virtual/jdk-1.6"
 
-#MY_PV="$(get_version_component_range 4-5)"
-
 RESTRICT="strip"
-#QA_TEXTRELS="opt/${P}/bin/libbreakgen.so"
 
 DESCRIPTION="JonDo, formerly JAP, is the ip changer proxy tool"
 HOMEPAGE="http://anonymous-proxy-servers.net/en/jondo.html"
@@ -24,6 +21,7 @@ pkg_postinst() {
     local wrapper="${dir}/${PN}.sh"
     touch ${wrapper}
     echo "#!/bin/sh" > ${wrapper}         
+    echo "cd ${dir}"
     echo "java -jar JAP.jar" >> ${wrapper}
     chmod 755 ${wrapper}
 }
