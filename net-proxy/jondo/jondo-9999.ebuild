@@ -21,7 +21,7 @@ pkg_postinst() {
     local wrapper="${dir}/${PN}.sh"
     touch ${wrapper}
     echo "#!/bin/sh" > ${wrapper}         
-    echo "cd ${dir}"
+    echo "cd ${dir}/jondo_linux" >> ${wrapper}
     echo "java -jar JAP.jar" >> ${wrapper}
     chmod 755 ${wrapper}
 }
