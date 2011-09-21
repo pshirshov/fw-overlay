@@ -25,7 +25,7 @@ pkg_postinst() {
     touch ${wrapper}
     echo "#!/bin/sh" > ${wrapper}         
     echo "java -jar JAP.jar" >> ${wrapper}
-    fperms 755 ${wrapper}
+    chmod 755 ${wrapper}
 }
 
 src_install() {
