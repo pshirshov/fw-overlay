@@ -19,5 +19,5 @@ src_unpack() {
 }
 
 src_install() {
-    newbin ${P}.sh unfoo || die
+    newbin ${PN}.sh unfoo || die
 }
