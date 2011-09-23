@@ -16,9 +16,9 @@ LICENSE="BSD"
 S="${WORKDIR}"
 
 src_unpack() {
-    cp "${DISTDIR}/${PN}.sh" "${WORKDIR}"
+    cp "${DISTDIR}/${P}.sh" "${WORKDIR}"
 }
 
 src_install() {
-    newbin ${PN}.sh ${PN} || die
+    newbin ${P}.sh ${PN} || die
 }
