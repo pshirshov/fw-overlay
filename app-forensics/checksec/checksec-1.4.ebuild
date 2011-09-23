@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI="4"
-SRC_URI="http://www.trapkit.de/tools/${PN}.sh"
+SRC_URI="http://www.trapkit.de/tools/${PN}.sh -> ${P}.sh "
 SLOT="0"
 
 RESTRICT="mirror"
@@ -11,6 +11,7 @@ DESCRIPTION="The checksec.sh script is designed to test what standard Linux OS a
 HOMEPAGE="http://www.trapkit.de/tools/checksec.html"
 RDEPEND="sys-devel/binutils"
 KEYWORDS="~x86 ~amd64"
+LICENSE="BSD"
 
 S="${WORKDIR}"
 
