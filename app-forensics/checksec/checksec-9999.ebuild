@@ -15,7 +15,7 @@ KEYWORDS="~x86 ~amd64"
 S="${WORKDIR}"
 
 src_unpack() {
-    cp "${DISTDIR}"/${A} "${WORKDIR}"
+    cp "${DISTDIR}/${PN}.sh" "${WORKDIR}"
 }
 
 src_install() {
