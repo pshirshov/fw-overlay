@@ -10,7 +10,7 @@ KEYWORDS="~x86-macos"
 
 DESCRIPTION="Provides the shelve command to lets you choose which parts of the changes in a working directory you'd like to set aside temporarily."
 HOMEPAGE="https://bitbucket.org/tksoh/hgshelve/"
-EHG_REPO_URI="https://bitbucket.org/tksoh/hgshelve/"
+EHG_REPO_URI="https://bitbucket.org/astiob/hgshelve/"
 
 LICENSE=""
 SLOT="0"
