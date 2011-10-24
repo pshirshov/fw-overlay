@@ -21,10 +21,12 @@ IUSE=""
 RESTRICT="mirror"
 
 DEPEND=">=virtual/jdk-1.6
+        dev-java/ant-core
         >=dev-java/maven-bin-2.2.1
         test? ( dev-java/ant-junit )"
 
 RDEPEND=">=virtual/jre-1.6
+         dev-java/ant-core
          >=dev-java/maven-bin-2.2.1"
 
 JAVA_GENTOO_CLASSPATH="ant-core"
