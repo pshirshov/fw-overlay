@@ -27,6 +27,8 @@ src_install() {
 	insinto "${dir}"
 	doins -r *
 	fperms 755 "${dir}/bin/${PN}.sh"
+	fperms 755 "${dir}/bin/fsnotifier"
+	fperms 755 "${dir}/bin/fsnotifier64"
 
 	newicon "bin/${PN}32.png" "${exe}.png"
 	make_wrapper "${exe}" "/opt/${P}/bin/${PN}.sh"
