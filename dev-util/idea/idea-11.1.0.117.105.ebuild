@@ -29,7 +29,7 @@ src_install() {
 	fperms 755 "${dir}/bin/fsnotifier"
 	fperms 755 "${dir}/bin/fsnotifier64"
 
-	newicon "bin/${PN}32.png" "${exe}.png"
+	newicon "bin/${PN}.png" "${exe}.png"
 	make_wrapper "${exe}" "/opt/${P}/bin/${PN}.sh"
 	make_desktop_entry ${exe} "IntelliJ IDEA ${PV}" "${exe}" "Development;IDE"
 }
