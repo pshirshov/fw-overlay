@@ -53,7 +53,6 @@ src_install() {
     done
 
     # Protect teamcity conf on upgrade
-    echo "CONFIG_PROTECT=\"${INSTALL_DIR}/conf\"" > "${T}/25teamcity" || die
+    echo "CONFIG_PROTECT=\"${INSTALL_DIR}/conf ${INSTALL_DIR}/buildAgent/conf\"" > "${T}/25teamcity" || die
     doenvd "${T}/25teamcity"
 }
-

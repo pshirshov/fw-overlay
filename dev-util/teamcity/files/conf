@@ -6,4 +6,7 @@ TEAMCITY_SERVER_OPS=""
 TEAMCITY_DATA_PATH=""
 # name of a script to execute before start/stop
 TEAMCITY_PREPARE_SCRIPT=""
-
+# agent memory options
+TEAMCITY_AGENT_MEM_OPTS=""
+# additional agent JVM options
+TEAMCITY_AGENT_OPTS=""
