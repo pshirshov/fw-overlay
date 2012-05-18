@@ -1,3 +1,5 @@
+EAPI="3"
+
 inherit eutils
 
 DESCRIPTION="Extensible continuous integration server"
@@ -11,7 +13,7 @@ KEYWORDS="x86 amd64"
 IUSE=""
 
 RDEPEND=">=virtual/jdk-1.5"
-EAPI="3"
+
 S="${WORKDIR}/TeamCity"
 INSTALL_DIR="/opt/teamcity"
 
