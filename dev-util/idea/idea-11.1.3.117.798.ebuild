@@ -19,6 +19,10 @@ KEYWORDS="~x86 ~amd64"
 MY_PV="$(get_version_component_range 4-5)"
 S="${WORKDIR}/${PN}-IU-${MY_PV}"
 
+src_prepare() {
+	epatch ${FILESDIR}/idea.sh.patch || die
+}
+
 src_install() {
 	local dir="/opt/${P}"
 	local exe="${PN}-${SLOT}"
