@@ -1,0 +1,14 @@
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header$
+#
+# P4V comes with its own libraries and knows where to find them so it will work
+# "just fine".
+#
+# However, without this file in /etc/revdep-rebuild, running the revdep-rebuild tool
+# will likely find that p4v is always out of date and will try to rebuild it, which
+# won't fix the apparent problem because this is a binary package.
+
+LD_LIBRARY_MASK="libQtSvgP4.so.4 libQtCLuceneP4.so.4 libQtCoreP4.so.4 libQtGuiP4.so.4 \
+libQtHelpP4.so.4 libQtNetworkP4.so.4 libQtSqlP4.so.4 libQtWebKitP4.so.4 libQtXmlP4.so.4 \
+libQtXmlPatternsP4.so.4"

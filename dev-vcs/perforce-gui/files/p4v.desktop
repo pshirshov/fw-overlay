@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Encoding=UTF-8
+Comment[en_US]=Perforce Client GUI
+Comment=Perforce Client GUI
+Exec=/opt/bin/p4v
+GenericName[en_US]=P4V
+GenericName=P4V
+Icon=/opt/lib/p4v/P4VResources/icons/p4v_32_high.png
+Name[en_US]=P4V
+Name=P4V
+Type=Application
+Categories=Development;
