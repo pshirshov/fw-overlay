@@ -21,7 +21,7 @@ pkg_postinst() {
     local wrapper="${dir}/${PN}.sh"
     touch ${wrapper}
     echo "#!/bin/sh" > ${wrapper}         
-    echo "cd ${dir}/bin" >> ${wrapper}
+    echo "cd ${dir}/jprofiler7/bin" >> ${wrapper}
     echo "java -jar jprofiler.jar" >> ${wrapper}
     chmod 755 ${wrapper}
 }
@@ -31,7 +31,7 @@ src_install() {
     insinto "${dir}"
     doins -r *
     
-    newicon ".install4j/i4j_extf_5_198c2a3_2q92zr.ico" "${PN}.ico"
+    newicon "jprofiler7/.install4j/i4j_extf_5_198c2a3_2q92zr.ico" "${PN}.ico"
     make_wrapper "${PN}" "${dir}/${PN}.sh"
     make_desktop_entry "${PN}" "JProfiler" "${PN}" "Development;Profiler"
 }
