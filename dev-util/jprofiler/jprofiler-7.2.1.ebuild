@@ -31,8 +31,8 @@ src_install() {
     insinto "${dir}"
     doins -r *
     
-    newicon "jprofiler7/.install4j/i4j_extf_5_198c2a3_2q92zr.ico" "${PN}.ico"
+    newicon "jprofiler7/.install4j/i4j_extf_3_198c2a3_8mtf09.png" "${PN}.png"
     make_wrapper "${PN}" "${dir}/${PN}.sh"
-    make_desktop_entry "${PN}" "JProfiler" "${PN}" "Development;Profiler"
+    make_desktop_entry "${PN}" "JProfiler" "${PN}" "Development;Profiling"
 }
 
