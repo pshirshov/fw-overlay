@@ -22,7 +22,7 @@ pkg_postinst() {
     touch ${wrapper}
     echo "#!/bin/sh" > ${wrapper}         
     echo "cd ${dir}/jprofiler7/bin" >> ${wrapper}
-    echo "java -jar jprofiler.jar" >> ${wrapper}
+    echo "/bin/sh jprofiler" >> ${wrapper}
     chmod 755 ${wrapper}
 }
 
