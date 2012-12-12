@@ -49,6 +49,8 @@ src_install() {
 	doins bin/idea-${SLOT}.vmoptions
 	rm bin/idea-${SLOT}.vmoptions
 
+	ln -s /etc/idea/idea-${SLOT}.properties bin/idea.properties
+
 	# idea itself
 	insinto "${dir}"
 	doins -r *

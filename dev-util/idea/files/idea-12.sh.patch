@@ -18,12 +18,4 @@
  fi
  if [ $BITS -eq 0 ]; then
    BITS="64"
-@@ -149,7 +151,7 @@
-   fi
- fi
- 
--COMMON_JVM_ARGS="\"-Xbootclasspath/a:$IDE_HOME/lib/boot.jar\" -Didea.paths.selector=IntelliJIdea12 $IDE_PROPERTIES_PROPERTY"
-+COMMON_JVM_ARGS="\"-Xbootclasspath/a:$IDE_HOME/lib/boot.jar\" -Didea.home.path=\"${IDE_HOME}\" -Didea.paths.selector=IntelliJIdea12 $IDE_PROPERTIES_PROPERTY"
- IDE_JVM_ARGS=""
- ALL_JVM_ARGS="$VM_OPTIONS $COMMON_JVM_ARGS $IDE_JVM_ARGS $AGENT $REQUIRED_JVM_ARGS"
  
