@@ -16,8 +16,10 @@ IUSE=""
 KEYWORDS="~x86 ~amd64"
 
 src_install() {
-    local dir="/opt/${PN}"
+    local dir="/opt/${PN}-${SLOT}"
     insinto "${dir}"
+
+    chmod +x jd-gui
     doins jd-gui
     make_wrapper "${PN}" "${dir}/jd-gui"
 }
