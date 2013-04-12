@@ -29,5 +29,9 @@ src_install() {
         insinto "${dir}"
         doins -r *
 
+        chmod +x "${dir}/${PN}"
+
         make_wrapper "${P}" "${dir}/${PN}"
+
+        fowners root:playdevelopers "${dir}/${each}"
 }
