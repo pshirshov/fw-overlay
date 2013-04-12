@@ -45,8 +45,9 @@ src_install() {
     fperms 600 /etc/jabber/${PN}.conf
     fowners jabber:jabber /etc/jabber/${PN}.conf
 
-    newinitd "${FILESDIR}/${PN}-initd" ${PN}
-    dosed "s:INSPATH:${inspath}:" /etc/init.d/${PN}
+    cp "${FILESDIR}/${PN}-initd" .
+    sed  -i -e"s:INSPATH:${inspath}:" ${PN}-initd
+    newinitd "${PN}-initd" ${PN}
 }
 
 pkg_postinst() {
