@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="5"
 inherit eutils versionator
 
 SLOT="$(get_major_version)"
@@ -27,7 +28,7 @@ pkg_postinst() {
 }
 
 src_prepare() {
-    cd "${S}"
+    cd "${WORKDIR}"
     case "${ARCH}" in
         amd64)
           find . \( -name "*.so" -and -not -wholename "*linux-x64/*.so" \) -delete
@@ -47,4 +48,3 @@ src_install() {
     make_wrapper "${PN}" "${dir}/${PN}.sh"
     make_desktop_entry "${PN}" "JProfiler" "${PN}" "Development;Profiling"
 }
-
