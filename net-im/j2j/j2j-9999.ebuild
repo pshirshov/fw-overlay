@@ -38,11 +38,11 @@ src_install() {
     newins j2j.conf.example ${PN}.conf
     fperms 600 /etc/jabber/${PN}.conf
     fowners jabber:jabber /etc/jabber/${PN}.conf
-    dosed \
-        "s:/var/log/j2j/j2j.log:/var/log/jabber/j2j.log:" \
+    sed -i \
+        -e "s:/var/log/j2j/j2j.log:/var/log/jabber/j2j.log:" \
         /etc/jabber/${PN}.conf
-    dosed \
-        "s:xml_logging=/var/log/j2j/xml.log:xml_logging=/var/log/jabber/j2j-xml.log:" \
+    sed -i \
+        -e "s:xml_logging=/var/log/j2j/xml.log:xml_logging=/var/log/jabber/j2j-xml.log:" \
         /etc/jabber/${PN}.conf
 
     newinitd "${FILESDIR}/${PN}-initd" ${PN}
