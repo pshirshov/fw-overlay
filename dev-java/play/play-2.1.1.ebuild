@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-#EAPI="2"
+EAPI="5"
 
 inherit eutils versionator
 
@@ -44,8 +44,8 @@ src_install() {
         fowners root:playdevelopers "${bootdir}"
         fperms 0775 "${bootdir}"
 
-        fperms 0775 "${skeldir}/java-skel/*"
-        fowners root:playdevelopers "${skeldir}/java-skel/*"
+        chmod 775 "${skeldir}/java-skel/*"
+        chown root:playdevelopers "${skeldir}/java-skel/*"
 
         make_wrapper "${P}" "${dir}/${PN}"
         elog "You must be in the playdevelopers group to use Play2 framework."
