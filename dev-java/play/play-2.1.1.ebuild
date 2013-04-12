@@ -34,6 +34,7 @@ src_install() {
 
         local repodir="${dir}/repository"
         local bootdir="${dir}/framework/sbt/boot"
+        local skeldir="${dir}/framework/skeletons"
 
         fperms 0755 "${dir}/${PN}"
         fperms 0775 "${repodir}"
@@ -42,6 +43,9 @@ src_install() {
         keepdir "${bootdir}"
         fowners root:playdevelopers "${bootdir}"
         fperms 0775 "${bootdir}"
+
+        fperms 0775 "${skeldir}/*-skel/*"
+        fowners root:playdevelopers "${skeldir}/*-skel/*"
 
         make_wrapper "${P}" "${dir}/${PN}"
         elog "You must be in the playdevelopers group to use Play2 framework."
