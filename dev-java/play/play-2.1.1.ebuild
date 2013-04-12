@@ -32,12 +32,16 @@ src_install() {
         insinto "${dir}"
         doins -r *
 
+        local repodir="${dir}/repository"
+        local bootdir="${dir}/framework/sbt/boot"
+
         fperms 0755 "${dir}/${PN}"
-        fperms 0775 "${dir}/repositories"
-        fowners root:playdevelopers "${dir}/repositories"
-        keepdir "${dir}/framework/sbt/boot"
-        fowners root:playdevelopers "${dir}/framework/sbt/boot"
-        fperms 0775 "${dir}/framework/sbt/boot"
+        fperms 0775 "${repodir}"
+        fowners root:playdevelopers "${repodir}"
+
+        keepdir "${bootdir}"
+        fowners root:playdevelopers "${bootdir}"
+        fperms 0775 "${bootdir}"
 
         make_wrapper "${P}" "${dir}/${PN}"
         elog "You must be in the playdevelopers group to use Play2 framework."
