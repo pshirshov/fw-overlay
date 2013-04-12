@@ -33,9 +33,12 @@ src_install() {
         doins -r *
 
         fperms 0755 "${dir}/${PN}"
+        fperms 0775 "${dir}/repositories"
+        fowners root:playdevelopers "${dir}/repositories"
+        keepdir "${dir}/framework/sbt/boot"
+        fowners root:playdevelopers "${dir}/framework/sbt/boot"
+        fperms 0775 "${dir}/framework/sbt/boot"
 
         make_wrapper "${P}" "${dir}/${PN}"
-
-        fowners root:playdevelopers "${dir}/${each}"
         elog "You must be in the playdevelopers group to use Play2 framework."
 }
