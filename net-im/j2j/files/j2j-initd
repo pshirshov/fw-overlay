@@ -2,7 +2,7 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-PIDFILE="/var/run/jabber/j2j.pid"
+P="/var/run/jabber/j2j.pid"
 
 depend() {
     need net
@@ -14,10 +14,11 @@ start() {
     start-stop-daemon \
         --start \
         --pidfile ${P} \
-        --chuid jabber:jabber \
-        --background --make-pidfile \
-        --exec /usr/bin/python INSPATH/main.py \
-        -- \
+        --user jabber \
+        --group jabber \
+        --background \
+        --make-pidfile \
+        --exec /usr/bin/python INSPATH/main.py -- \
         -c /etc/jabber/j2j.conf
     eend $?
 }
