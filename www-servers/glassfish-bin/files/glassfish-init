@@ -1,0 +1,17 @@
+#!/sbin/runscript
+
+depend() {
+    need net
+}
+
+start() {
+    ebegin "Starting GlassFish application server"
+    /opt/glassfish/bin/asadmin start-domain
+    eend $?
+}
+
+stop() {
+    ebegin "Sopping GlassFish application server"
+    /opt/glassfish/bin/asadmin stop-domain
+    eend $?
+}
