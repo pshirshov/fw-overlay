@@ -44,8 +44,8 @@ src_install() {
         fowners root:playdevelopers "${bootdir}"
         fperms 0775 "${bootdir}"
 
-        fperms 0775 "${skeldir}/*-skel/*"
-        fowners root:playdevelopers "${skeldir}/*-skel/*"
+        fperms 0775 "${skeldir}/java-skel/*"
+        fowners root:playdevelopers "${skeldir}/java-skel/*"
 
         make_wrapper "${P}" "${dir}/${PN}"
         elog "You must be in the playdevelopers group to use Play2 framework."
