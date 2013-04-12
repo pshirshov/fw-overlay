@@ -1,7 +1,7 @@
 # Copyright Nikolaus Polak
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI="5"
 
 inherit eutils multilib python subversion
 
@@ -23,44 +23,44 @@ RDEPEND=">=dev-lang/python-2.3
          mysql? ( >=dev-db/mysql-4.1 )"
 
 src_unpack() {
-	subversion_src_unpack
+    subversion_src_unpack
 }
 
 src_install() {
-        local inspath
+    local inspath
 
-        python_version
-        inspath=/usr/$(get_libdir)/python${PYVER}/site-packages/${PN}
-        insinto ${inspath}
-        doins -r *
+    python_version
+    inspath=/usr/$(get_libdir)/python${PYVER}/site-packages/${PN}
+    insinto ${inspath}
+    doins -r *
 
-        insinto /etc/jabber
-        newins j2j.conf.example ${PN}.conf
-        fperms 600 /etc/jabber/${PN}.conf
-        fowners jabber:jabber /etc/jabber/${PN}.conf
-	dosed \
-		"s:/var/log/j2j/j2j.log:/var/log/jabber/j2j.log:" \
-		/etc/jabber/${PN}.conf
-	dosed \
-		"s:xml_logging=/var/log/j2j/xml.log:xml_logging=/var/log/jabber/j2j-xml.log:" \
-		/etc/jabber/${PN}.conf
+    insinto /etc/jabber
+    newins j2j.conf.example ${PN}.conf
+    fperms 600 /etc/jabber/${PN}.conf
+    fowners jabber:jabber /etc/jabber/${PN}.conf
+    dosed \
+        "s:/var/log/j2j/j2j.log:/var/log/jabber/j2j.log:" \
+        /etc/jabber/${PN}.conf
+    dosed \
+        "s:xml_logging=/var/log/j2j/xml.log:xml_logging=/var/log/jabber/j2j-xml.log:" \
+        /etc/jabber/${PN}.conf
 
-        newinitd "${FILESDIR}/${PN}-initd" ${PN}
-	dosed "s:INSPATH:${inspath}:" /etc/init.d/${PN}
+    newinitd "${FILESDIR}/${PN}-initd" ${PN}
+    dosed "s:INSPATH:${inspath}:" /etc/init.d/${PN}
 }
 
 pkg_postinst() {
-        python_version
-        python_mod_optimize ${ROOT}usr/$(get_libdir)/python${PYVER}/site-packages/${PN}
+    python_version
+    python_mod_optimize ${ROOT}usr/$(get_libdir)/python${PYVER}/site-packages/${PN}
 
-        elog "A sample configuration file has been installed in /etc/jabber/${PN}.conf."
-        elog "Please edit it and the configuration of your Jabber server to match."
-	elog "Don't forget the database connection too. If it's your first install, you"
-	elog "need to initialize the Database following this documentation:"
-	elog "http://wiki.jrudevels.org/Eng:J2J:AdminGuide#Database_setup"
+    elog "A sample configuration file has been installed in /etc/jabber/${PN}.conf."
+    elog "Please edit it and the configuration of your Jabber server to match."
+    elog "Don't forget the database connection too. If it's your first install, you"
+    elog "need to initialize the Database following this documentation:"
+    elog "http://wiki.jrudevels.org/Eng:J2J:AdminGuide#Database_setup"
 }
 
 pkg_postrm() {
-        python_version
-        python_mod_cleanup ${ROOT}usr/$(get_libdir)/python${PYVER}/site-packages/${PN}
+    python_version
+    python_mod_cleanup ${ROOT}usr/$(get_libdir)/python${PYVER}/site-packages/${PN}
 }

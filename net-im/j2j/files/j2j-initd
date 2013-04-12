@@ -2,22 +2,28 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+PIDFILE="/var/run/jabber/j2j.pid"
+
 depend() {
-	need net
-	use jabber-server
+    need net
+    use jabber-server
 }
 
 start() {
-	ebegin "Starting J2J Jabber Transport"
-	start-stop-daemon --start --pidfile /var/run/jabber/j2j.pid --chuid jabber:jabber \
-                --background --make-pidfile \
-		--exec /usr/bin/python INSPATH/main.py -- \
-		-c /etc/jabber/j2j.conf
-	eend $?
+    ebegin "Starting J2J Jabber Transport"
+    start-stop-daemon \
+        --start \
+        --pidfile ${P} \
+        --chuid jabber:jabber \
+        --background --make-pidfile \
+        --exec /usr/bin/python INSPATH/main.py \
+        -- \
+        -c /etc/jabber/j2j.conf
+    eend $?
 }
 
 stop() {
-	ebegin "Stopping J2J Jabber Transport"
-	start-stop-daemon --stop --quiet --pidfile /var/run/jabber/j2j.pid
-	eend $?
+    ebegin "Stopping J2J Jabber Transport"
+    start-stop-daemon --stop --quiet --pidfile ${P}
+    eend $?
 }
