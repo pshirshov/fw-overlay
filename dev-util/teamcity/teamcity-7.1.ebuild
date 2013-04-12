@@ -5,14 +5,13 @@ inherit eutils
 DESCRIPTION="Extensible continuous integration server"
 HOMEPAGE="http://www.jetbrains.com/teamcity/"
 LICENSE="MIT"
-# We are using rpm package here, because we want file with version.
 SRC_URI="http://download.jetbrains.com/teamcity/TeamCity-${PV}.tar.gz"
 RESTRICT="mirror"
 SLOT="0"
 KEYWORDS="x86 amd64"
 IUSE=""
 
-RDEPEND=">=virtual/jdk-1.5"
+RDEPEND=">=virtual/jdk-1.6"
 
 S="${WORKDIR}/TeamCity"
 INSTALL_DIR="/opt/teamcity"
@@ -27,13 +26,7 @@ pkg_setup() {
 
 src_prepare() {
     cd "${S}"
-    find . \( -name \*.exe -or -name \*.bat -or -name \*.cmd \) -delete
-    rm  buildAgent/launcher/lib/libwrapper-solaris-x86-32.so \
-        buildAgent/launcher/lib/libwrapper-solaris-sparc-32.so \
-        buildAgent/launcher/lib/libwrapper-solaris-sparc-64.so \
-        buildAgent/launcher/bin/TeamCityAgentService-solaris-sparc-64 \
-        buildAgent/launcher/bin/TeamCityAgentService-solaris-sparc-32 \
-        buildAgent/launcher/bin/TeamCityAgentService-solaris-x86-32
+    find bin/ \( -name \*.exe -or -name \*.bat -or -name \*.cmd \) -delete
 }
 
 src_install() {
