@@ -29,5 +29,5 @@ src_install() {
         insinto "${dir}"
         doins -r *
 
-        make_wrapper "${P}" "${dir}/${P}/${PN}"
+        make_wrapper "${P}" "${dir}/${PN}"
 }
