@@ -44,8 +44,8 @@ src_install() {
         fowners root:playdevelopers "${bootdir}"
         fperms 0775 "${bootdir}"
 
-        chmod 775 "framework/skeletons/java-skel/*"
-        chown root:playdevelopers "framework/skeletons/java-skel/*"
+        chmod -R 775 "${ED}/${dir}/framework/skeletons/java-skel/"
+        chown -R root:playdevelopers "${ED}/${dir}/framework/skeletons/java-skel/"
 
         make_wrapper "${P}" "${dir}/${PN}"
         elog "You must be in the playdevelopers group to use Play2 framework."
