@@ -16,6 +16,7 @@ SRC_URI="http://download-aws.ej-technologies.com/jprofiler/jprofiler_linux_${PV/
 LICENSE="jprofiler"
 IUSE=""
 KEYWORDS="~x86 ~amd64"
+S="${WORKDIR}/jprofiler${SLOT}"
 
 pkg_postinst() {
     local dir="/opt/${PN}"
@@ -28,7 +29,7 @@ pkg_postinst() {
 }
 
 src_prepare() {
-    cd "${WORKDIR}"
+    cd "${S}"
     case "${ARCH}" in
         amd64)
           find . \( -name "*.so" -and -not -wholename "*linux-x64/*.so" \) -delete
