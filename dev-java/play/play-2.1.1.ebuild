@@ -23,7 +23,10 @@ DEPEND=">=virtual/jdk-1.6
 RDEPEND=">=virtual/jre-1.6
         "
 
-# TODO we should use jars from packages, instead of what is bundled
+pkg_setup() {
+    enewgroup playdevelopers
+}
+
 src_install() {
         local dir="/opt/${P}"
         insinto "${dir}"
@@ -34,4 +37,5 @@ src_install() {
         make_wrapper "${P}" "${dir}/${PN}"
 
         fowners root:playdevelopers "${dir}/${each}"
+        elog "You must be in the playdevelopers group to use Play2 framework."
 }
