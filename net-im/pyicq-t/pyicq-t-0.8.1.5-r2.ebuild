@@ -24,6 +24,7 @@ RDEPEND="${DEPEND}
 	>=dev-python/twisted-words-0.1.0
 	>=dev-python/twisted-web-0.5.0
 	webinterface? ( >=dev-python/nevow-0.4.1 )
+	postgres? ( >=dev-db/pygresql-3.8.1 )
 	>=dev-python/imaging-1.1"
 
 pkg_setup() {
