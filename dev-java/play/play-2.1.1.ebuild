@@ -48,6 +48,7 @@ src_install() {
 
         find "${ED}/${dir}/framework/skeletons" -type d -print0 | xargs -0 chmod -R 775
         find "${ED}/${dir}/framework/skeletons" -type f -print0 | xargs -0 chmod -R 664
+        find "${ED}/${dir}/framework" -maxdepth 1 -type f -print0 | xargs -0 chmod -R 755
 
         make_wrapper "${P}" "${dir}/${PN}"
         elog "You must be in the playdevelopers group to use Play2 framework."
