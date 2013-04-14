@@ -47,6 +47,7 @@ src_install() {
         chown -R root:playdevelopers "${ED}/${dir}/framework/skeletons"
 
         find "${ED}/${dir}/framework/skeletons" -type d -print0 | xargs -0 chmod -R 775
+        find "${ED}/${dir}/framework/skeletons" -type f -print0 | xargs -0 chmod -R 664
 
         make_wrapper "${P}" "${dir}/${PN}"
         elog "You must be in the playdevelopers group to use Play2 framework."
