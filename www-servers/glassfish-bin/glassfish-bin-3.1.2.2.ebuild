@@ -42,8 +42,12 @@ src_install() {
         fperms 755 ${INSTALL_DIR}/${i}
     done
 
+    fperms 775 ${INSTALL_DIR}/domains
+
     newinitd "${FILESDIR}/${MY_PN}-init" glassfish
 
     echo "CONFIG_PROTECT=\"${INSTALL_DIR}/glassfish/config\"" > "${T}/25glassfish" || die
     doenvd "${T}/25glassfish"
+
+    elog "You must be in the glassfish group to use GlassFish without root rights."
 }
