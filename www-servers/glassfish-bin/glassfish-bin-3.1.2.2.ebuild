@@ -42,7 +42,7 @@ src_install() {
         fperms 755 ${INSTALL_DIR}/${i}
     done
 
-    fperms 775 ${INSTALL_DIR}/domains
+    fperms 775 ${INSTALL_DIR}/glassfish/domains
 
     newinitd "${FILESDIR}/${MY_PN}-init" glassfish
 
