@@ -45,10 +45,7 @@ src_install() {
     newinitd "${FILESDIR}/${MY_PN}-init" glassfish
 
     keepdir ${INSTALL_DIR}/glassfish/domains
-    fperms -R g+w "${INSTALL_DIR}/glassfish/domains"
-
-    #find "${INSTALL_DIR}/glassfish/domains" -type d -print0 | xargs -0 chmod -R 775
-    #find "${INSTALL_DIR}/glassfish/domains" -type f -print0 | xargs -0 chmod g+w
+    #fperms -R g+w "${INSTALL_DIR}/glassfish/domains"
 
     echo "CONFIG_PROTECT=\"${INSTALL_DIR}/glassfish/config\"" > "${T}/25glassfish" || die
     doenvd "${T}/25glassfish"
@@ -56,4 +53,8 @@ src_install() {
     elog "You must be in the glassfish group to use GlassFish without root rights."
 }
 
+post_install() {
+    find "${INSTALL_DIR}/glassfish/domains" -type d -print0 | xargs -0 chmod -R 775
+    find "${INSTALL_DIR}/glassfish/domains" -type f -print0 | xargs -0 chmod g+w
+}
 
