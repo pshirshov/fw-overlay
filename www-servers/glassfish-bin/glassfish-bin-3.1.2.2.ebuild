@@ -38,6 +38,10 @@ src_install() {
         make_wrapper "$(basename ${i})" "${INSTALL_DIR}/${i}"
     done
 
+    for i in glassfish/bin/* ; do
+        fperms 755 ${INSTALL_DIR}/${i}
+    done
+
     newinitd "${FILESDIR}/${MY_PN}-init" glassfish
 
     echo "CONFIG_PROTECT=\"${INSTALL_DIR}/glassfish/config\"" > "${T}/25glassfish" || die
