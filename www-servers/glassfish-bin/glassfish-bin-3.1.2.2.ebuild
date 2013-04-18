@@ -54,7 +54,7 @@ src_install() {
 }
 
 pkg_postinst() {
-    chmod -R g+w "${INSTALL_DIR}/glassifsh/domains"
-    chown -R glassfish:glassfish "${INSTALL_DIR}/glassifsh/domains"
+    chmod -R g+w "${INSTALL_DIR}/glassfish/domains"
+    chown -R glassfish:glassfish "${INSTALL_DIR}/glassfish/domains"
 }
 
