@@ -42,8 +42,8 @@ src_install() {
         fperms 755 ${INSTALL_DIR}/${i}
     done
 
-    find "${ED}/glassfish/domains" -type d -print0 | xargs -0 chmod -R 775
-    find "${ED}/glassfish/domains" -type f -print0 | xargs -0 chmod g+w
+    find "${INSTALL_DIR}/glassfish/domains" -type d -print0 | xargs -0 chmod -R 775
+    find "${INSTALL_DIR}/glassfish/domains" -type f -print0 | xargs -0 chmod g+w
 
     newinitd "${FILESDIR}/${MY_PN}-init" glassfish
 
