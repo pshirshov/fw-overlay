@@ -53,7 +53,7 @@ src_install() {
     elog "You must be in the glassfish group to use GlassFish without root rights."
 }
 
-post_install() {
+pkg_postinst() {
     chmod -R g+w "${INSTALL_DIR}/glassifsh/domains"
     chown -R glassfish:glassfish "${INSTALL_DIR}/glassifsh/domains"
 }
