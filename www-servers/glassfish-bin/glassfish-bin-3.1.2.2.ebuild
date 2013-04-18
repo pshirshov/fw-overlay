@@ -54,7 +54,7 @@ src_install() {
 }
 
 post_install() {
-    find "${INSTALL_DIR}/glassfish/domains" -type d -print0 | xargs -0 chmod -R 775
-    find "${INSTALL_DIR}/glassfish/domains" -type f -print0 | xargs -0 chmod g+w
+    chmod -R g+w "${INSTALL_DIR}/glassifsh/domains"
+    chown -R glassfish:glassfish "${INSTALL_DIR}/glassifsh/domains"
 }
 
