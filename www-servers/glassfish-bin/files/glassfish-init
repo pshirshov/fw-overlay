@@ -1,17 +1,32 @@
 #!/sbin/runscript
 
+NAME=${SVCNAME/glassfish/}
+DOMAIN=${NAME#*.}
+
 depend() {
     need net
 }
 
 start() {
     ebegin "Starting GlassFish application server"
-    /opt/glassfish/bin/asadmin start-domain
+
+    if [[ "x${DOMAIN}" == "x" ]]; then
+        /opt/glassfish/bin/asadmin start-domain
+    else
+        einfo "Starting domain ${DOMAIN}"
+        /opt/glassfish/bin/asadmin start-domain ${DOMAIN}
+    fi
     eend $?
 }
 
 stop() {
     ebegin "Sopping GlassFish application server"
-    /opt/glassfish/bin/asadmin stop-domain
+
+    if [[ "x${DOMAIN}" == "x" ]]; then
+        /opt/glassfish/bin/asadmin stop-domain ${DOMAIN}
+    else
+        einfo "Stopping domain ${DOMAIN}"
+        /opt/glassfish/bin/asadmin stop-domain ${DOMAIN}
+    fi
     eend $?
 }

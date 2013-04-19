@@ -32,7 +32,7 @@ src_install() {
 
     doins -r glassfish javadb mq pkg bin
     keepdir ${INSTALL_DIR}/home
-    fowners -R glassfish:glassfish ${INSTALL_DIR}
+
     for i in bin/* ; do
         fperms 755 ${INSTALL_DIR}/${i}
         make_wrapper "$(basename ${i})" "${INSTALL_DIR}/${i}"
@@ -45,20 +45,18 @@ src_install() {
     newinitd "${FILESDIR}/${MY_PN}-init" glassfish
 
     keepdir ${INSTALL_DIR}/glassfish/domains
-    #fperms -R g+w "${INSTALL_DIR}/glassfish/domains"
+    fperms -R g+w "${INSTALL_DIR}/glassfish/domains"
+
+    fowners -R glassfish:glassfish ${INSTALL_DIR}
 
     echo "CONFIG_PROTECT=\"${INSTALL_DIR}/glassfish/config\"" > "${T}/25glassfish" || die
     doenvd "${T}/25glassfish"
-
-    elog "You must be in the glassfish group to use GlassFish without root rights."
-    elog "You should create separate domain for development needs using"
-    elog "    $ asadmin create-domain devdomain"
-    elog "under your account"
-    elog "Don't use same domain under different credentials!"
 }
 
 pkg_postinst() {
-    chmod -R g+w "${INSTALL_DIR}/glassfish/domains"
-    chown -R glassfish:glassfish "${INSTALL_DIR}/glassfish/domains"
+    elog "You must be in the glassfish group to use GlassFish without root rights."
+    elog "You should create separate domain for development needs using"
+    elog "    \$ asadmin create-domain devdomain"
+    elog "under your account"
+    elog "Don't use same domain under different credentials!"
 }
-
