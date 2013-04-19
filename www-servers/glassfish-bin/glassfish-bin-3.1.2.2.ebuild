@@ -51,6 +51,8 @@ src_install() {
     doenvd "${T}/25glassfish"
 
     elog "You must be in the glassfish group to use GlassFish without root rights."
+    elog "You should create separate domain for development needs using `asadmin create-domain devdomain` with your rights"
+    elog "Don't use same domain under different credentials!"
 }
 
 pkg_postinst() {
