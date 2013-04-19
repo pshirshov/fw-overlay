@@ -51,8 +51,8 @@ src_install() {
     doenvd "${T}/25glassfish"
 
     elog "You must be in the glassfish group to use GlassFish without root rights."
-    elog "You should create separate domain for development needs using""
-    elog "    $ asadmin create-domain devdomain
+    elog "You should create separate domain for development needs using"
+    elog "    $ asadmin create-domain devdomain"
     elog "under your account"
     elog "Don't use same domain under different credentials!"
 }
