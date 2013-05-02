@@ -15,13 +15,15 @@ start() {
 
     ebegin "Starting ${SVCNAME}"
 
+    . /etc/conf.d/teamcity
     su $RUN_AS -c "cd /opt/teamcity/bin/ && /bin/bash runAll.sh start &> /dev/null"
     eend $?
 }
 
 stop() {
     ebegin "Stopping ${SVCNAME}"
-    cd /opt/teamcity/bin/
+
+    . /etc/conf.d/teamcity
     su $RUN_AS -c "cd /opt/teamcity/bin/ && /bin/bash runAll.sh stop &> /dev/null"
     eend $?
 }
