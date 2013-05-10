@@ -11,10 +11,10 @@ start() {
     ebegin "Starting GlassFish application server"
 
     if [[ "x${DOMAIN}" == "x" ]]; then
-        /opt/glassfish/bin/asadmin start-domain
+        su -l glassfish -c '/opt/glassfish/bin/asadmin start-domain'
     else
         einfo "Starting domain ${DOMAIN}"
-        /opt/glassfish/bin/asadmin start-domain ${DOMAIN}
+        su -l glassfish -c '/opt/glassfish/bin/asadmin start-domain ${DOMAIN}'
     fi
     eend $?
 }
@@ -23,10 +23,10 @@ stop() {
     ebegin "Sopping GlassFish application server"
 
     if [[ "x${DOMAIN}" == "x" ]]; then
-        /opt/glassfish/bin/asadmin stop-domain ${DOMAIN}
+        su -l glassfish -c '/opt/glassfish/bin/asadmin stop-domain'
     else
         einfo "Stopping domain ${DOMAIN}"
-        /opt/glassfish/bin/asadmin stop-domain ${DOMAIN}
+        su -l glassfish -c '/opt/glassfish/bin/asadmin stop-domain ${DOMAIN}'
     fi
     eend $?
 }
