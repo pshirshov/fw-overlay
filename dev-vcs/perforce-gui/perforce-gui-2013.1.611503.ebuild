@@ -36,7 +36,7 @@ src_install() {
 	doins -r * || die
 
 	for i in bin/* ; do
-		if [[ ${i} != *'.bin'* ]]; then
+		if [[ ${i} != *'.bin' && ${i} != *'.conf' ]]; then
 			make_wrapper "$(basename ${i})" "/opt/${PN}/${i}"
 		fi
 	done
