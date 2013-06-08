@@ -29,12 +29,10 @@ RDEPEND="
     dev-qt/qtgui:4
 "
 
-src_prepare() {
-    rm "${FILESDIR}/bin/assistant"
-}
-
 src_install() {
 	cd p4v-${PVR} || die
+    rm bin/assistant
+
 	insopts -m0755
 	insinto /opt/${PN}
 	doins -r * || die
