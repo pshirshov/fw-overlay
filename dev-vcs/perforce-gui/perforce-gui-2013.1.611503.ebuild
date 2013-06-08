@@ -29,6 +29,10 @@ RDEPEND="
     dev-qt/qtgui:4
 "
 
+src_prepare() {
+    rm "${FILESDIR}/bin/assistant"
+}
+
 src_install() {
 	cd p4v-${PVR} || die
 	insopts -m0755
