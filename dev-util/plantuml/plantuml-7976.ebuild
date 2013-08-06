@@ -7,10 +7,12 @@ EANT_BUILD_TARGET="dist"
 inherit eutils versionator java-pkg-2 java-ant-2
 
 SLOT="0"
-CDEPEND=">=dev-java/ant-core-1.8.4"
-RDEPEND="
+DEPEND="
     >=virtual/jdk-1.6
     >=media-gfx/graphviz-2.26.3
+    "
+RDEPEND="
+    ${DEPEND}
     "
 
 RESTRICT="strip"
