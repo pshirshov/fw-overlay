@@ -35,14 +35,14 @@ src_install() {
 
     for i in bin/* ; do
         fperms 755 ${INSTALL_DIR}/${i}
-        make_wrapper "$(basename ${i})" "${INSTALL_DIR}/${i}"
+        make_wrapper "$(basename ${i})-oracle" "${INSTALL_DIR}/${i}"
     done
 
     for i in glassfish/bin/* ; do
         fperms 755 ${INSTALL_DIR}/${i}
     done
 
-    newinitd "${FILESDIR}/${MY_PN}-init" glassfish
+    newinitd "${FILESDIR}/${MY_PN}-init" oracle-glassfish
 
     keepdir ${INSTALL_DIR}/glassfish/domains
     fperms -R g+w "${INSTALL_DIR}/glassfish/domains"
