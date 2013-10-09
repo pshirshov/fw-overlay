@@ -25,6 +25,6 @@ src_install() {
 
     fperms 755 ${INSTALL_DIR}/bin/jprofiler
     make_wrapper "${PN}" "${INSTALL_DIR}/bin/jprofiler"
-    newicon ".install4j/i4j_extf_3_198c2a3_8mtf09.png" "${PN}.png"
+    newicon ".install4j/i4j_extf_3_9w0uxi_8mtf09.png" "${PN}.png"
     make_desktop_entry "${PN}" "JProfiler" "${PN}" "Development;Profiling"
 }
