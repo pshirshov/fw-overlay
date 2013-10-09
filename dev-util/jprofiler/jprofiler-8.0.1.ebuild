@@ -24,7 +24,7 @@ src_install() {
     doins -r * .install4j
 
     fperms 755 ${INSTALL_DIR}/bin/jprofiler
-    make_wrapper "${PN}" "${INSTALL_DIR}/bin/jprofiler"
-    newicon ".install4j/i4j_extf_3_9w0uxi_8mtf09.png" "${PN}.png"
-    make_desktop_entry "${PN}" "JProfiler" "${PN}" "Development;Profiling"
+    make_wrapper "${PN}${PV}" "${INSTALL_DIR}/bin/jprofiler"
+    newicon ".install4j/i4j_extf_3_9w0uxi_8mtf09.png" "${PN}${PV}.png"
+    make_desktop_entry "${PN}${PV}" "JProfiler ${PV}" "${PN}${PV}" "Development;Profiling"
 }
