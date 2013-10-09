@@ -54,7 +54,7 @@ src_install() {
 }
 
 pkg_postinst() {
-    elog "You must be in the glassfish group to use GlassFish without root rights."
+    elog "You must be in the oracle-glassfish group to use GlassFish without root rights."
     elog "You should create separate domain for development needs using"
     elog "    \$ asadmin create-domain devdomain"
     elog "under your account"
