@@ -4,7 +4,7 @@
    exit 1
  fi
  
-+. /etc/conf.d/idea-12
++. /etc/conf.d/idea-13
 +
  OS_TYPE=`"$UNAME" -s`
  
