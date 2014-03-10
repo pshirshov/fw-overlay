@@ -11,7 +11,7 @@ HOMEPAGE="http://www.keepassx.org/dev"
 if [[ ${PV} != 9999* ]] ; then
     SRC_URI="https://github.com/keepassx/keepassx/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
     S="${WORKDIR}/${P/_/-}"
-    KEYWORDS="~*"
+    KEYWORDS="**"
 else
     inherit git-2
     EGIT_REPO_URI="https://github.com/keepassx/keepassx"
