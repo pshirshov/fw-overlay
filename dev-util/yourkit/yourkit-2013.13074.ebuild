@@ -22,7 +22,7 @@ INSTALL_DIR="/opt/${PN}-${PV}"
 
 src_install() {
     insinto "${INSTALL_DIR}"
-    doins -r *
+    doins -r bin lib  license.html  license-redist.txt  probes  samples
 
     fperms 755 ${INSTALL_DIR}/bin/yjp.sh
     make_wrapper "${PN}-${PV}" "${INSTALL_DIR}/bin/yjp.sh"
