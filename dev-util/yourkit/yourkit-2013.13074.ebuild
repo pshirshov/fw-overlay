@@ -24,7 +24,7 @@ src_install() {
     insinto "${INSTALL_DIR}"
     doins -r *
 
-    fperms 755 ${INSTALL_DIR}/bin/jprofiler
+    fperms 755 ${INSTALL_DIR}/bin/yjp.sh
     make_wrapper "${PN}${PV}" "${INSTALL_DIR}/bin/yjp.sh"
     newicon "bin/yjp.ico" "${PN}${PV}.ico"
     make_desktop_entry "${PN}${PV}" "YourKit ${PV}" "${PN}${PV}" "Development;Profiling"
