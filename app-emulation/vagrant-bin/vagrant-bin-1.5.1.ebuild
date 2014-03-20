@@ -18,7 +18,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 RESTRICT="mirror"
-QA_PRESTRIPPED="/usr/bin/${PN}"
 
 S=${WORKDIR}
 
@@ -27,7 +26,7 @@ src_unpack() {
     cd "${S}"
 }
 
-src_install() {
-    exeinto /usr/bin
-    doexe usr/bin/${PN} || die
-}
+#src_install() {
+#    exeinto /usr/bin
+#    doexe usr/bin/${PN} || die
+#}
