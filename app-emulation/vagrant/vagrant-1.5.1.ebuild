@@ -55,7 +55,7 @@ all_ruby_prepare() {
 		-i ${PN}.gemspec || die
 
 	#epatch "${FILESDIR}"/${PN}-1.2.1-no-warning.patch
-	epatch "${FILESDIR}"/${PN}-1.2.2-rvm.patch
+	#epatch "${FILESDIR}"/${PN}-1.2.2-rvm.patch
 }
 
 pkg_postinst() {
