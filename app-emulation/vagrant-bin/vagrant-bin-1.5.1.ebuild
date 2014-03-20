@@ -20,13 +20,19 @@ RDEPEND="${DEPEND}"
 RESTRICT="mirror"
 
 S=${WORKDIR}
+INSTALL_DIR="/opt/${PN}-${PV}"
+
 
 src_unpack() {
     rpm_src_unpack "${A}"
-    cd "${S}"
+    cd "${S}/opt/vagrant"
 }
 
-#src_install() {
-#    exeinto /usr/bin
-#    doexe usr/bin/${PN} || die
-#}
+src_install() {
+    insinto "${INSTALL_DIR}"
+    doins -r *
+
+    fperms 755 ${INSTALL_DIR}/bin/vagrant
+    make_wrapper "${PN}-${PV}" "${INSTALL_DIR}/bin/vagrant"
+}
+
