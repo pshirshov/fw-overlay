@@ -33,6 +33,7 @@ src_install() {
     doins -r *
 
     fperms 755 ${INSTALL_DIR}/bin/vagrant
+    fperms 755 ${INSTALL_DIR}/embedded/bin/*
     make_wrapper "${PN}-${PV}" "${INSTALL_DIR}/bin/vagrant"
 }
 
