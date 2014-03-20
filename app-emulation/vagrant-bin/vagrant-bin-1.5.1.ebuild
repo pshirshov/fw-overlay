@@ -19,13 +19,13 @@ RDEPEND="${DEPEND}"
 
 RESTRICT="mirror"
 
-S=${WORKDIR}
+S=${WORKDIR}/opt/vagrant
 INSTALL_DIR="/opt/${PN}-${PV}"
 
 
 src_unpack() {
     rpm_src_unpack "${A}"
-    cd "${S}/opt/vagrant"
+    #cd "${S}/opt/vagrant"
 }
 
 src_install() {
