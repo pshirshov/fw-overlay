@@ -34,6 +34,6 @@ src_install() {
 
     fperms 755 ${INSTALL_DIR}/bin/vagrant
     fperms 755 ${INSTALL_DIR}/embedded/bin/*
-    make_wrapper "${PN}-${PV}" "${INSTALL_DIR}/bin/vagrant"
+    make_wrapper "vagrant" "${INSTALL_DIR}/bin/vagrant"
 }
 
