@@ -47,8 +47,8 @@ ruby_add_bdepend "
 
 all_ruby_prepare() {
 	# remove bundler support
-	sed -i '/[Bb]undler/d' Rakefile || die
-	rm Gemfile || die
+	#sed -i '/[Bb]undler/d' Rakefile || die
+	#rm Gemfile || die
 
 	# loosen dependencies
 	sed -e '/childprocess\|erubis\|log4r\|net-scp/s/~>/>=/' \
