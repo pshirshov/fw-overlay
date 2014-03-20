@@ -54,7 +54,7 @@ all_ruby_prepare() {
 		-e '/net-ssh/s:, "< 2.8.0"::' \
 		-i ${PN}.gemspec || die
 
-	epatch "${FILESDIR}"/${PN}-1.2.1-no-warning.patch
+	#epatch "${FILESDIR}"/${PN}-1.2.1-no-warning.patch
 	epatch "${FILESDIR}"/${PN}-1.2.2-rvm.patch
 }
 
