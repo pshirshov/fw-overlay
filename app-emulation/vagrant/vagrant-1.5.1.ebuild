@@ -7,7 +7,7 @@ USE_RUBY="ruby20"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 RUBY_FAKEGEM_GEMSPEC="vagrant.gemspec"
-RUBY_FAKEGEM_EXTRAINSTALL="config keys plugins templates"
+RUBY_FAKEGEM_EXTRAINSTALL="keys plugins templates"
 RUBY_FAKEGEM_TASK_DOC=""
 
 inherit ruby-fakegem eutils
