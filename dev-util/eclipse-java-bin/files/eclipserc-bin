@@ -7,7 +7,7 @@
 # Increase those numbers if you get OutOfMemory errors.
 
 ECLIPSE_XMS=128m
-ECLIPSE_XMX=256m
+ECLIPSE_XMX=768m
 
 # Following variables controls the minimal and maximum amounts of memory
 # allocated to the permanent generation space.

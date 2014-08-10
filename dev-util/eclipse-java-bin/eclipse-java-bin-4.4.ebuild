@@ -10,7 +10,7 @@ RNAME="luna"
 
 SRC_URI="http://download.eclipse.org/technology/epp/downloads/release/luna/R/eclipse-jee-luna-R-linux-gtk-x86_64.tar.gz"
 
-DESCRIPTION="Eclipse SDK"
+DESCRIPTION="Eclipse IDE for Java EE Developers"
 HOMEPAGE="http://www.eclipse.org"
 
 LICENSE="EPL-1.0"
