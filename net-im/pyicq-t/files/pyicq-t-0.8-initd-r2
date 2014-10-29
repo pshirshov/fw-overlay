@@ -13,7 +13,7 @@ depend() {
 start() {
 	ebegin "Starting ICQ Jabber Transport"
 	checkpath -q -d -m 0755 -o jabber:jabber /var/run/jabber/
-	start-stop-daemon --start --pidfile ${P} -u jabber -g jabber \
+	start-stop-daemon --start --pidfile ${PIDFILE} -u jabber -g jabber \
 		--exec INSPATH/pyicq-t.py -- \
 		-b -c /etc/jabber/pyicq-t.xml -l /var/log/jabber/pyicq-t.log
 	eend $?
@@ -21,6 +21,6 @@ start() {
 
 stop() {
 	ebegin "Stopping ICQ Jabber Transport"
-	start-stop-daemon --stop --quiet --pidfile ${P}
+	start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
 	eend $?
 }
