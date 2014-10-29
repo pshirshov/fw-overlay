@@ -3,3 +3,6 @@
 
 # missed metastore package (not really needed?)
 =app-admin/etckeeper-9999
+
+# invald ebuild file (to be removed)
+=dev-util/jd-gui-0.3.5
