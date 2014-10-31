@@ -16,4 +16,5 @@ net-analyzer/traceroute
 net-analyzer/wireshark
 net-misc/telnet-bsd
 sys-process/htop
+sys-process/iotop
 sys-process/lsof
