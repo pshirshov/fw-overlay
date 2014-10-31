@@ -7,5 +7,5 @@
 # invald ebuild file (to be removed)
 <=dev-util/jd-gui-0.3.5-r1
 
-# main portage tree now contains this package
-net-im/pyicq-t::fw-overlay
+# this overlay overrides default overlay
+net-im/pyicq-t::gentoo
