@@ -8,4 +8,4 @@
 <=dev-util/jd-gui-0.3.5-r1
 
 # this overlay overrides default overlay
-net-im/pyicq-t::gentoo
+net-im/pyicq-t:0

@@ -13,7 +13,7 @@ SRC_URI="http://pyicqt.googlecode.com/files/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="patched"
 KEYWORDS="amd64 x86"
 IUSE="webinterface systemd postgres"
 
