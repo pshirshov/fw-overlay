@@ -21,8 +21,8 @@ RDEPEND="${DEPEND}
          dev-python/twisted-core[${PYTHON_USEDEP}]
          dev-python/twisted-words[${PYTHON_USEDEP}]
          dev-python/twisted-names[${PYTHON_USEDEP}]
-         postgres? ( >=dev-db/pygresql-4.1.1-r1[${PYTHON_USEDEP}] )
-         mysql? ( >=dev-db/mysql-4.1 )"
+         postgres? ( !mysql? ( >=dev-db/pygresql-4.1.1-r1[${PYTHON_USEDEP}] ) )
+         mysql? ( !postgres? ( >=dev-db/mysql-4.1 ) )"
 
 src_unpack() {
     subversion_src_unpack
@@ -36,6 +36,17 @@ src_install() {
     newins j2j.conf.example ${PN}.conf
     fperms 600 /etc/jabber/${PN}.conf
     fowners jabber:jabber /etc/jabber/${PN}.conf
+    newins j2j.conf.example ${PN}.conf
+
+    insinto /var/lib/j2j
+    if use postgres; then
+        doins pgsql.schema alters/pgsql/*
+    fi
+    if use mysql; then
+        doins mysql.schema alters/mysql/*
+    fi
+
+    dodoc Changelog.txt
 
     sed -i \
         -e "s:/var/log/j2j/j2j.log:/var/log/jabber/j2j.log:" \
