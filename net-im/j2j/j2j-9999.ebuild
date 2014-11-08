@@ -3,7 +3,8 @@
 
 EAPI="5"
 PYTHON_DEPEND="2"
-inherit eutils multilib python subversion
+PYTHON_COMPAT=( python2_7 )
+inherit eutils python-single-r1 subversion
 
 DESCRIPTION="Jabber2Jabber Transport"
 ESVN_REPO_URI="svn://svn.jrudevels.org/${PN}/trunk"
@@ -12,14 +13,15 @@ HOMEPAGE="http://wiki.jrudevels.org/index.php/Eng:J2J"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="pgsql mysql"
+IUSE="+postgres mysql"
 
 IUSE="postgres mysql"
-RDEPEND=">=dev-lang/python-2.3
-         >=dev-python/twisted-8.0.1
-         >=dev-python/twisted-words-8.0.1
-         >=dev-python/twisted-names-8.0.1
-         postgres? ( >=dev-db/pygresql-3.8 )
+DEPEND="net-im/jabber-base"
+RDEPEND="${DEPEND}
+         dev-python/twisted-core[${PYTHON_USEDEP}]
+         dev-python/twisted-words[${PYTHON_USEDEP}]
+         dev-python/twisted-names[${PYTHON_USEDEP}]
+         postgres? ( >=dev-db/pygresql-4.1.1-r1[${PYTHON_USEDEP}] )
          mysql? ( >=dev-db/mysql-4.1 )"
 
 src_unpack() {
@@ -27,41 +29,29 @@ src_unpack() {
 }
 
 src_install() {
-    local inspath
-
-    inspath=$(python_get_sitedir)/${PN}
-    insinto ${inspath}
-    doins -r *
+    python_moduleinto ${PN}
+    python_domodule *.py
 
     insinto /etc/jabber
     newins j2j.conf.example ${PN}.conf
     fperms 600 /etc/jabber/${PN}.conf
     fowners jabber:jabber /etc/jabber/${PN}.conf
+
     sed -i \
         -e "s:/var/log/j2j/j2j.log:/var/log/jabber/j2j.log:" \
         -e "s:xml_logging=/var/log/j2j/xml.log:xml_logging=/var/log/jabber/j2j-xml.log:" \
         "${ED}/etc/jabber/${PN}.conf"
 
     newinitd "${FILESDIR}/${PN}-initd" ${PN}
-    sed -i -e "s:INSPATH:${inspath}:" "${ED}/etc/init.d/${PN}"
-    python_convert_shebangs ${PYTHON_ABI} "${ED}$(python_get_sitedir)/${PN}/main.py"
-}
+    sed -i -e "s:INSPATH:$(python_get_sitedir)/${PN}:" "${ED}/etc/init.d/${PN}"
 
-pkg_setup() {
-    python_set_active_version ${PYTHON_DEPEND}
-    python_pkg_setup
+    python_fix_shebang "${D}$(python_get_sitedir)/${PN}"
 }
 
 pkg_postinst() {
-    python_mod_optimize ${PN}
-
     elog "A sample configuration file has been installed in /etc/jabber/${PN}.conf."
     elog "Please edit it and the configuration of your Jabber server to match."
     elog "Don't forget the database connection too. If it's your first install, you"
     elog "need to initialize the Database following this documentation:"
     elog "http://wiki.jrudevels.org/Eng:J2J:AdminGuide#Database_setup"
-}
-
-pkg_postrm() {
-    python_mod_cleanup ${PN}
 }
