@@ -21,13 +21,15 @@ INSTALL_DIR="/opt/${PN}"
 SLOT="0"
 DEPEND=""
 RDEPEND="${DEPEND}"
-
+S="${WORKDIR}/Telegram"
 
 src_install() {
     insinto "${INSTALL_DIR}"
     doins -r Telegram Updater
 
-    #fperms 755 ${INSTALL_DIR}/bin/yjp.sh
+    fperms 777 ${INSTALL_DIR}/Telegram
+    fperms 777 ${INSTALL_DIR}/Updater
+
     make_wrapper "${PN}" "${INSTALL_DIR}/Telegram"
     #newicon "bin/yjp.ico" "${PN}-${PV}.ico"
     make_desktop_entry "${PN}" "Telegram" "${PN}" "Messenger"
