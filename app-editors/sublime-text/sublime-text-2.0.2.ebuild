@@ -35,5 +35,5 @@ src_install() {
 
         make_wrapper "${PN}-${PV}" "${INSTALL_DIR}/sublime_text"
         newicon "Icon/128x128/sublime_text.png" "${PN}-${PV}.png"
-	make_desktop_entry "sublime_text" "Sublime Text Editor"	"${PN}-${PV}" "Office;TextEditor"
+	make_desktop_entry "${PN}-${PV}" "Sublime Text Editor" "${PN}-${PV}" "Office;TextEditor"
 }
