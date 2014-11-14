@@ -25,16 +25,15 @@ src_install() {
 	insinto ${INSTALL_DIR}
 	
 	doins -r "lib"
+	doins -r "Icon"
 	doins -r "Pristine Packages"
 	doins "sublime_plugin.py"
 	doins "PackageSetup.py"
-	doexe "sublime_text"
+	doins "sublime_text"
         
-	#local env_file=07${PN}
-	#echo "PATH=/opt/${PN}" > ${env_file}
-	#echo "ROOTPATH=/opt/${PN}" >> ${env_file}
-	#doenvd ${env_file}
+        fperms 755 ${INSTALL_DIR}/sublime_text
 
         make_wrapper "${PN}-${PV}" "${INSTALL_DIR}/sublime_text"
-	make_desktop_entry "sublime_text" "Sublime Text Editor"	"accessories-text-editor" "Office;TextEditor"
+        newicon "Icon/128x128/sublime_text.png" "${PN}-${PV}.png"
+	make_desktop_entry "sublime_text" "Sublime Text Editor"	"${PN}-${PV}" "Office;TextEditor"
 }
