@@ -22,15 +22,14 @@ INSTALL_DIR="/opt/${PN}-$(get_major_version)"
 S=${WORKDIR}/"Sublime Text 2"
 
 src_install() {
-	insinto /opt/${PN}
-	into /opt/${PN}
-	exeinto /opt/${PN}
+	insinto ${INSTALL_DIR}
+	
 	doins -r "lib"
 	doins -r "Pristine Packages"
 	doins "sublime_plugin.py"
 	doins "PackageSetup.py"
 	doexe "sublime_text"
-
+        
 	#local env_file=07${PN}
 	#echo "PATH=/opt/${PN}" > ${env_file}
 	#echo "ROOTPATH=/opt/${PN}" >> ${env_file}
