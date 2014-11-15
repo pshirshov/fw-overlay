@@ -36,8 +36,5 @@ src_install() {
     make_wrapper "${PN}-${PV}" "${INSTALL_DIR}/sublime_text"
     newicon "Icon/128x128/sublime_text.png" "${PN}-${PV}.png"
 	
-	local desktop_file
-	desktop_file=$(make_desktop_entry "${PN}-${PV}" "Sublime Text Editor" "${PN}-${PV}" "GTK;Utility;Office;TextEditor;") 
-	echo "StartupNotify=true" >> "${desktop_file}" 
-	echo "MimeType=text/plain;" >> "${desktop_file}" 
+	make_desktop_entry "${PN}-${PV}" "Sublime Text Editor" "${PN}-${PV}" "GTK;Utility;Office;TextEditor;" "StartupNotify=true\nMimeType=text/plain;"
 }
