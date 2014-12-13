@@ -29,7 +29,7 @@ IUSE=""
 KEYWORDS="~x86 ~amd64"
 MY_PV="$(get_version_component_range 4-5)"
 
-S="${WORKDIR}/${PN}-IU-${MY_PV}.1"
+S="${WORKDIR}/${PN}-IU-${MY_PV}.2"
 
 src_prepare() {
 	epatch ${FILESDIR}/idea-${SLOT}.sh.patch || die
