@@ -13,7 +13,6 @@ QA_TEXTRELS="opt/${P}/bin/libbreakgen.so"
 DESCRIPTION="The intelligent cross-platform C/C++ IDE"
 HOMEPAGE="https://www.jetbrains.com/clion/"
 
-VER=($(get_all_version_components))
 SRC_URI="http://download.jetbrains.com/cpp/${PN}-${PV}.tar.gz"
 
 LICENSE="CLion-IDEA"
