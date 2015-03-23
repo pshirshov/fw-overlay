@@ -7,7 +7,7 @@ inherit eutils user systemd
 
 DESCRIPTION="Multi-Model Open Source NoSQL DBMS that combines the power of graphs and the flexibility of documents into one scalable, high-performance operational database."
 HOMEPAGE="http://www.orientechnologies.com"
-SRC_URI="http://www.orientechnologies.com/download.php?email=unknown@unknown.com&file=orientdb-community-${PV}.tar.gz&os=linux"
+SRC_URI="http://www.orientechnologies.com/download.php?email=unknown@unknown.com&file=orientdb-community-${PV}.tar.gz&os=linux -> orientdb-community-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
