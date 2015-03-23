@@ -33,6 +33,8 @@ pkg_setup() {
 src_prepare() {
     cd "${S}"
     find . \( -name \*.bat -or -name \*.exe \) -delete
+    rm -rf ./databases/
+    rm -rf ./log/
 }
 
 src_install() {
