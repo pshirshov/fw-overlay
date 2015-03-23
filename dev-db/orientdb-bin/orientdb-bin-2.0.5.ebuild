@@ -47,13 +47,12 @@ src_install() {
 
     keepdir /var/lib/orientdb
     keepdir /var/log/orientdb
+    fowners -R orientdb:orientdb /var/lib/orientdb
+    fowners -R orientdb:orientdb /var/log/orientdb
+    fowners -R orientdb:orientdb ${INSTALL_DIR}
 
     ln -s /var/lib/orientdb ${INSTALL_DIR}/databases
     ln -s /var/log/orientdb ${INSTALL_DIR}/log
-
-
-    fowners -R orientdb:orientdb /var/lib/orientdb
-    fowners -R orientdb:orientdb ${INSTALL_DIR}
 
 	if use systemd; then
 		systemd_dounit "${FILESDIR}/orientdb.service"
