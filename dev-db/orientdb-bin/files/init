@@ -1,0 +1,54 @@
+#!/sbin/runscript
+
+NAME=orientdb
+DESC="orientdb"
+PIDFILE=/var/run/$NAME/$NAME.pid
+DAEMON=/opt/orientdb-community/bin/server.sh
+DAEMON_OPTS=""
+USER="orientdb"
+
+start() {
+    ebegin "Starting orientdb"
+    [ -e `dirname "$PIDFILE"` ] || \
+        install -d -oorientdb -gorientdb -m750 `dirname $PIDFILE`
+
+    start-stop-daemon \
+      --start \
+      --user $USER \
+      --exec $DAEMON \
+      --quiet \
+      --pidfile $PIDFILE \
+      --test >/dev/null || eend 1
+
+    start-stop-daemon \
+      --start \
+      --user $USER \
+      --exec $DAEMON \
+      --background \
+      --pidfile "$PIDFILE" \
+      -- $DAEMON_OPTS >/dev/null
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping orientdb"
+    start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE
+    eend $?
+}
+
+restart() {
+    ebegin "Restarting orientdb"
+    start-stop-daemon \
+      --stop \
+      --quiet \
+      --oknodo \
+      --retry TERM/30/KILL/5 > /dev/null || eend 1
+    start-stop-daemon \
+      --start \
+      --quiet \
+      --pidfile $PIDFILE \
+      --chuid $USER \
+      --exec $DAEMON \
+      -- $DAEMON_OPTS > /dev/null
+    eend $?
+}

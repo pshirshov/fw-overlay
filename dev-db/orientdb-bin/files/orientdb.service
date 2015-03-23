@@ -1,0 +1,15 @@
+[Unit]
+Description=Orientdb
+After=network.target
+ 
+[Service]
+Type=simple
+User=orientdb
+Group=orientdb
+ExecStart=/usr/bin/odb-server
+StandardOutput=journal
+StandardError=journal
+LimitNOFILE=infinity
+  
+[Install]
+WantedBy=multi-user.target
