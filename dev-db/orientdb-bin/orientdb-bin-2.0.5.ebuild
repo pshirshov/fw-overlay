@@ -45,12 +45,10 @@ src_install() {
         make_wrapper "odb-$(basename ${i})" "${INSTALL_DIR}/${i}"
     done
 
-    mkdir /var/lib/orientdb
     keepdir /var/lib/orientdb
-    ln -s /var/lib/orientdb ${INSTALL_DIR}/databases
-    
-    mkdir /var/log/orientdb
     keepdir /var/log/orientdb
+
+    ln -s /var/lib/orientdb ${INSTALL_DIR}/databases
     ln -s /var/log/orientdb ${INSTALL_DIR}/log
 
 
@@ -58,8 +56,8 @@ src_install() {
     fowners -R orientdb:orientdb ${INSTALL_DIR}
 
 	if use systemd; then
-		systemd_dounit "${FILESDIR}/orientdb.service" 
-	else 
+		systemd_dounit "${FILESDIR}/orientdb.service"
+	else
 		newinitd "${FILESDIR}/init" orientdb
 	fi
 
