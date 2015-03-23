@@ -35,6 +35,9 @@ src_prepare() {
     find . \( -name \*.bat -or -name \*.exe \) -delete
     rm -rf ./databases/
     rm -rf ./log/
+
+    ln -s /var/lib/orientdb databases
+    ln -s /var/log/orientdb log
 }
 
 src_install() {
@@ -52,9 +55,6 @@ src_install() {
     fowners -R orientdb:orientdb /var/lib/orientdb
     fowners -R orientdb:orientdb /var/log/orientdb
     fowners -R orientdb:orientdb ${INSTALL_DIR}
-
-    ln -s /var/lib/orientdb ${INSTALL_DIR}/databases
-    ln -s /var/log/orientdb ${INSTALL_DIR}/log
 
 	if use systemd; then
 		systemd_dounit "${FILESDIR}/orientdb.service"
