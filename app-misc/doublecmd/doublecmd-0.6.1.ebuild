@@ -34,12 +34,18 @@ INSTALL_DIR="/opt/${PN}"
 
 S=${WORKDIR}/"doublecmd"
 
+src_prepare() {
+    sed -i -e 's/<UseConfigInProgramDir>True/<UseConfigInProgramDir>False/' ${PN}.xml || die "Sed failed!"
+}
+
+
 src_install() {
 	insinto ${INSTALL_DIR}
 
 	doins -r *
 
     fperms 755 ${INSTALL_DIR}/${PN}.sh
+    fperms 755 ${INSTALL_DIR}/${PN}
 
     make_wrapper "${PN}" "${INSTALL_DIR}/${PN}.sh"
     newicon "${PN}.png" "${PN}.png"
