@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils versionator
+inherit eutils versionator fwutils
 
 DESCRIPTION="Sublime Text is a sophisticated text editor for code, html and prose"
 HOMEPAGE="http://www.sublimetext.com"
@@ -23,18 +23,18 @@ S=${WORKDIR}/"Sublime Text 2"
 
 src_install() {
 	insinto ${INSTALL_DIR}
-	
+
 	doins -r "lib"
 	doins -r "Icon"
 	doins -r "Pristine Packages"
 	doins "sublime_plugin.py"
 	doins "PackageSetup.py"
 	doins "sublime_text"
-        
+
     fperms 755 ${INSTALL_DIR}/sublime_text
 
     make_wrapper "${PN}-${SLOT}" "${INSTALL_DIR}/sublime_text"
     newicon "Icon/128x128/sublime_text.png" "${PN}-${PV}.png"
-	
-	make_desktop_entry "${PN}-${SLOT}" "Sublime Text Editor" "${PN}-${PV}" "GTK;Utility;Office;TextEditor;" "StartupNotify=true\nMimeType=text/plain;"
+
+	fw_make_desktop_entry "${PN}-${SLOT}" "Sublime Text Editor" "${PN}-${PV}" "GTK;Utility;Office;TextEditor;" "${PN}-${SLOT}.desktop" "StartupNotify=true\nMimeType=text/plain;"
 }

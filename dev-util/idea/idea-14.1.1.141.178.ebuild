@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 EAPI="4"
-inherit eutils versionator
+inherit eutils versionator fwutils
 
 SLOT="$(get_major_version)"
 RDEPEND=">=virtual/jdk-1.6"
@@ -28,6 +28,7 @@ LICENSE="IntelliJ-IDEA"
 IUSE=""
 KEYWORDS="~x86 ~amd64"
 MY_PV="$(get_version_component_range 4-5)"
+SHORT_PV="$(get_version_component_range 1-2)"
 
 S="${WORKDIR}/${PN}-IU-${MY_PV}"
 
@@ -76,7 +77,7 @@ src_install() {
 
 	newicon "bin/${PN}.png" "${exe}.png"
 	make_wrapper "${exe}" "/opt/${P}/bin/${PN}.sh"
-	make_desktop_entry ${exe} "IntelliJ IDEA ${PV}" "${exe}" "Development;IDE"
+	fw_make_desktop_entry ${exe} "IntelliJ IDEA ${SHORT_PV}" "${exe}" "Development;IDE" "${exe}.desktop"
 
 	# Protect idea conf on upgrade
 	env_file="${T}/25idea-${SLOT}"

@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils versionator
+inherit eutils versionator fwutils
 
 DESCRIPTION="Double Commander is a cross platform open source file manager with two panels side by side. It is inspired by Total Commander and features some new ideas."
 HOMEPAGE="http://doublecmd.sourceforge.net/"
@@ -50,5 +50,5 @@ src_install() {
     make_wrapper "${PN}" "${INSTALL_DIR}/${PN}.sh"
     newicon "${PN}.png" "${PN}.png"
 
-	make_desktop_entry "${PN}" "Double Commander" "${PN}" "Utility;"
+	fw_make_desktop_entry "${PN}" "Double Commander" "${PN}" "Utility;" "doublecmd.desktop"
 }
