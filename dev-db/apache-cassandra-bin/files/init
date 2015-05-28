@@ -1,17 +1,19 @@
 #!/sbin/runscript
 
-NAME=cassandra
-DESC="Cassandra"
+NAME=cassandra-{SLOT}
+DESC="Cassandra v{SLOT}"
 PIDFILE=/var/run/$NAME/$NAME.pid
 
-DAEMON=/opt/cassandra/bin/cassandra
+_CASSANDRA_DIR="/opt/${NAME}"
+
+DAEMON=${_CASSANDRA_DIR}/bin/cassandra
 DAEMON_OPTS="-p $PIDFILE"
 USER="cassandra"
 
-. /opt/cassandra/conf/cassandra-env.sh
+. ${_CASSANDRA_DIR}/conf/cassandra-env.sh
 
 start() {
-    ebegin "Starting cassandra"
+    ebegin "Starting ${DESC}"
     [ -e `dirname "$PIDFILE"` ] || \
         install -d -ocassandra -gcassandra -m750 `dirname $PIDFILE`
 
@@ -34,7 +36,7 @@ start() {
 }
 
 stop() {
-    ebegin "Stopping cassandra"
+    ebegin "Stopping ${DESC}"
     start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE
     eend $?
 }
