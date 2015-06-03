@@ -9,3 +9,5 @@
 
 # this overlay overrides default overlay
 net-im/pyicq-t:0
+
+=dev-vcs/git-when-merged-9999
