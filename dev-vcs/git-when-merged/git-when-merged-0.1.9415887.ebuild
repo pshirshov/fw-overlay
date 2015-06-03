@@ -12,17 +12,16 @@ HOMEPAGE="https://github.com/mhagger/git-when-merged"
 EGIT_REPO_URI="https://github.com/mhagger/git-when-merged"
 
 if [[ ${PV} == 9999* ]] ; then
-    KEYWORDS="**"
+    KEYWORDS=""
 else
     # second version comonent is a ebuild sequential number, third version
     # component is a dec-encoded 8 hex digits of commit hash
     EGIT_COMMIT="$(printf "%08x" $(get_version_component_range 3))"
-    KEYWORDS="~amd64 ~x86"
+    KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror"
 IUSE=""
 
