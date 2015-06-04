@@ -35,6 +35,7 @@ EOF
 [[ -d ${CACHE_DIR} ]] && rm -rf ${CACHE_DIR}
 egencache \
     --repositories-configuration="${CONFIG}" \
+    --jobs="$(($(nproc) + 1))" \
     --repo="${REPO_NAME}" \
     --update \
     --update-manifests
