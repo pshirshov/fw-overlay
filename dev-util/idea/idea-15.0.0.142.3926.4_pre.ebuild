@@ -13,22 +13,13 @@ QA_TEXTRELS="opt/${P}/bin/libbreakgen.so"
 DESCRIPTION="IntelliJ IDEA is a complete toolset for web, mobile and enterprise development."
 HOMEPAGE="http://jetbrains.com/idea/"
 
-VER=($(get_all_version_components))
-if [[ "${VER[4]}" == "0" ]]; then
-    if [[ "${VER[2]}" == "0" ]]; then
-        SRC_URI="http://download.jetbrains.com/${PN}/${PN}IU-$(get_version_component_range 1-1).tar.gz"
-    else
-        SRC_URI="http://download.jetbrains.com/${PN}/${PN}IU-$(get_version_component_range 1-2).tar.gz"
-    fi
-else
-    SRC_URI="http://download.jetbrains.com/${PN}/${PN}IU-$(get_version_component_range 1-3).tar.gz"
-fi
+MY_PV="$(get_version_component_range 4-6)"
+SHORT_PV="$(get_version_component_range 1-2)"
+SRC_URI="http://download.jetbrains.com/${PN}/${PN}IU-${MY_PV}.tar.gz"
 
 LICENSE="IDEA IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal"
 IUSE=""
 KEYWORDS="~x86 ~amd64"
-MY_PV="$(get_version_component_range 4-6)"
-SHORT_PV="$(get_version_component_range 1-2)"
 
 S="${WORKDIR}/${PN}-IU-${MY_PV}"
 
@@ -74,7 +65,7 @@ src_install() {
 	fperms 755 "${dir}/bin/fsnotifier"
 	fperms 755 "${dir}/bin/fsnotifier64"
 
-	newicon "bin/${PN}.png" "${exe}.png"
+	newicon "bin/${PN}.png" "${PN}.png"
 	make_wrapper "${PN}" "/opt/${P}/bin/${PN}.sh"
 	fw_make_desktop_entry ${exe} "IntelliJ IDEA ${SHORT_PV}" "${exe}" "Development;IDE" "${exe}.desktop"
 
